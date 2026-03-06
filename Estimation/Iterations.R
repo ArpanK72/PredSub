@@ -1,17 +1,17 @@
 all_results <- vector("list", 1000)
 
 for (iter in 1:1000) {
-  result <- matrix(nrow = length(rholist) * (length(mlist) + 1) * length(dlist), ncol = 7)
+  result <- matrix(nrow = length(rholist) * (length(alist) + 1) * length(dlist), ncol = 7)
   j      <- 1
   
   for (d in dlist) {
     B <- BX_list[[as.character(d)]]$B
     X <- BX_list[[as.character(d)]]$X
     
-    p    <- sum(eigen(B)$values > 0)
-    
     for (rho in rholist) {
-      A <- sparsegraph_GRDPG(X, B, blocks = 100, rho_n = rho)
+      A <- sparsegraph_SBM(X, B, blocks = 100, rho_n = rho)
+      
+      p    <- sum(eigen(B)$values > 0)
       
       # ASE
       est1          <- ASE(A, d, p_known = TRUE, p)
@@ -24,14 +24,14 @@ for (iter in 1:1000) {
       
       # PredSub
       for (k in 1:length(alist)) {
-        m             <- ceiling(log(n)^(1 + mlist[k]))
+        m             <- ceiling(log(n)^(1 + alist[k]))
         est2          <- PredSub(A, m, d, p_known = TRUE, p)
         p = est2$p
         I_pq <- diag(c(rep(1, times = p), rep(-1, times = d - p)))
         mat_dist2     <- matrix_distance(X, B, est2$Xhat, I_pq, rho_n = rho)
-        result[j, ]   <- c(mlist[k], est2$t, mat_dist2, d, 1, rho, m)
+        result[j, ]   <- c(alist[k], est2$t, mat_dist2, d, 1, rho, m)
         j             <- j + 1
-        cat(sprintf("Iter %d | PredSub done | a = %.2f | rho = %.2f | d = %d\n", iter, mlist[k], rho, d))
+        cat(sprintf("Iter %d | PredSub done | a = %.2f | rho = %.2f | d = %d\n", iter, alist[k], rho, d))
       }
       
       rm(A)
