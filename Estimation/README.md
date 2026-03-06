@@ -9,8 +9,8 @@ This repository contains the R code to reproduce the simulation results for the 
 .
 ├── Run_All.R        # Entry point — set parameters and run full pipeline
 ├── Functions.R      # All core functions
-├── Generation.R     # Data generation (B and X)
-├── Iterations.R     # 1000 simulation iterations
+├── Generation.R     # Generation of true probability matrices
+├── Iterations.R     # 1000 Monte Carlo iterations
 ├── Tables.R         # Summarises results into final table
 └── README.md
 ```
@@ -70,7 +70,7 @@ The entry point for the full pipeline. Sets all parameters (`model`, `n`, `alist
 Loads all required packages and defines all core functions used in the simulation, including graph generation, spectral embedding, predictive subsampling, and distance computation.
 
 ### `Generation.R`
-Generates the true latent positions and block probability matrix for each value of `d` in `dlist`, and stores them in `BX_list`:
+Generates the true latent positions and block probability matrix for each value of `d` in `dlist`, and stores them in `BX_list`. The underlying probability matrix is given by `P = rho_n * X B X^T`.
 
 - **`B`** — `d × d` matrix with `B_ij = 0.5` for `i ≠ j` and `B_ii ~ Uniform(0, 1)`. For `model = "RDPG"`, off-diagonals are set to 0.
 - **`X`** — `n × d` matrix with rows drawn iid from `Dirichlet(0.5, ..., 0.5)`.
