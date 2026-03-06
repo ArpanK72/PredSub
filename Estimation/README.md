@@ -77,10 +77,9 @@ Generates the true latent positions `X` and block probability matrix `B` for eac
 ### `Iterations.R`
 Runs 1000 independent simulation iterations. In each iteration:
 
-1. For each `d` in `dlist`, reads `B` and `X`.
-2. For each `rho` in `rholist`, generates a sparse adjacency matrix `A` via `sparsegraph_SBM`.
-3. Runs **ASE** on the full graph and records runtime and error.
-4. Runs **PredSub** for each `a` in `alist` with `m = ceiling(log(n)^{1+a})` and records runtime and error.
+1. For each `d` in `dlist` and each `rho` in `rholist`, generates a sparse adjacency matrix `A` via `sparsegraph_SBM` from `P = rho_n * X B X^T`.
+2. Runs **ASE** on the full graph and records runtime and error.
+3. Runs **PredSub** for each `a` in `alist` with `m = ceiling(log(n)^{1+a})` and records runtime and error.
 
 Results from all iterations are pooled into `combined_result`.
 
