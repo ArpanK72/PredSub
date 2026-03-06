@@ -70,15 +70,15 @@ The entry point for the full pipeline. Sets all parameters (`model`, `n`, `alist
 Loads all required packages and defines all core functions used in the simulation, including graph generation, spectral embedding, predictive subsampling, and distance computation.
 
 ### `Generation.R`
-Generates the true latent positions `X` and block probability matrix `B` for each value of `d` in `dlist`, and stores them in `BX_list`. The underlying probability matrix is given by `P = rho_n * X B X^T`.
+Generates the true latent positions `X` and block probability matrix `B` for each value of `d` in `dlist`. The underlying probability matrix is given by `P = rho_n * X B X^T`.
 
 `B` and `X` are generated once and held in memory for all 1000 iterations.
 
 ### `Iterations.R`
 Runs 1000 independent simulation iterations. In each iteration:
 
-1. For each `d` in `dlist`, reads `B` and `X` from `BX_list`.
-2. For each `rho` in `rholist`, computes `p = #{positive eigenvalues of B}` and generates a sparse adjacency matrix `A` via `sparsegraph_SBM`.
+1. For each `d` in `dlist`, reads `B` and `X`.
+2. For each `rho` in `rholist`, generates a sparse adjacency matrix `A` via `sparsegraph_SBM`.
 3. Runs **ASE** on the full graph and records runtime and error.
 4. Runs **PredSub** for each `a` in `alist` with `m = ceiling(log(n)^{1+a})` and records runtime and error.
 
