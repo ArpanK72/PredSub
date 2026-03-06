@@ -170,10 +170,11 @@ ASE <- function(A, d, p_known = TRUE, p = d) {
 }
 
 
-# Predictive Subsampling (ASE).
+# Predictive Subsampling (PredSub).
 # Input  : A -> symmetric adjacency matrix, m <- subsample size, d -> rank,
 #          p_known -> whether p is known (default: TRUE).
 #          p -> number of positive eigenvalues if known(default: d),
+#          sampling -> sampling strategy (default: "random").
 # Output : estimated latent position X, p -> number of positive eigenvalues, t -> runtime.
 PredSub <- function(A, m, d, p_known = TRUE, p = d, sampling = "random") {
   st <- Sys.time()
