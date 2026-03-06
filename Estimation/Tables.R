@@ -26,5 +26,3 @@ tab <- summary_result %>%
   ) %>%
   select(d, rho, method, a, time_mean, speedup, error, error_sd, acc_ratio) %>%
   arrange(d, rho, method == "PredSub", a)
-
-View(tab)
