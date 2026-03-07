@@ -1,3 +1,5 @@
+#Set the directory to be this Estimation folder
+
 model = "GRDPG" #underlying probability model. RDPG or GRDPG.
 
 n = 100000 #network size
