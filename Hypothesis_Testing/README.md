@@ -68,13 +68,13 @@ The entry point for the full pipeline. Sets all parameters and sources the four 
 Loads all required packages and defines all core functions used in the simulation, including graph generation, spectral embedding, predictive subsampling, distance computation, and bootstrap-based hypothesis tests.
 
 ### `Testing_Generation.R`
-Generates the latent position matrix `X` via Dirichlet sampling and the block probability matrix `B` once, held in memory for all `r` iterations. The underlying probability matrix is given by $P^{(1)} = \rho_n \Pi B \Pi^T$.
+Generates the latent position matrix `X` via Dirichlet sampling and the block probability matrix `B` once, held in memory for all `r` iterations.
 
 ### `Testing_Iterations.R`
 Runs `r` independent Monte Carlo iterations. In each iteration:
 
-1. Generates a sparse adjacency matrix `A` under $H_0$ from $P^{(1)} = \rho_n \Pi B \Pi^T$.
-2. For each `epsilon` in `epsilons`, generates `A_e` under $H_1$ from $P^{(2)} = \rho_n \Pi (B + \epsilon J) \Pi^T$.
+1. Generates a sparse adjacency matrix `A` under $H_0$ from $P = \rho_n X B \Pi^\top$.
+2. For each `epsilon` in `epsilons`, generates `A_e` under $H_1$ from $P_\epsilon = \rho_n X (B + \epsilon J) X^\top$.
 3. Runs **ASE test** on `(A, A_e)` and records p-value and runtime.
 4. Runs **PredSub test** for each `a` in `alist` with `m = ceiling(log(n)^{1+a})` and records p-value and runtime.
 5. Runs **PureSub test** for each `b = a + 0.125` and records p-value and runtime.
