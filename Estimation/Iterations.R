@@ -1,6 +1,6 @@
-all_results <- vector("list", 1000)
+all_results <- vector("list", r)
 
-for (iter in 1:1000) {
+for (iter in 1:r) {
   result <- matrix(nrow = length(rholist) * (length(alist) + 1) * length(dlist), ncol = 7)
   j      <- 1
   
