@@ -21,7 +21,7 @@ Supplementary codes for the paper **"Predictive Subsampling for Scalable Inferen
 Contains code to reproduce the estimation simulation results in the paper. Compares **ASE** (Adjacency Spectral Embedding) and **PredSub** (Predictive Subsampling) in terms of runtime and accuracy across various network sizes, embedding dimensions, and sparsity factors. See [`Estimation/README.md`](Estimation/README.md) for details.
 
 ### `Hypothesis_Testing/`
-Contains code to reproduce the hypothesis testing experiments (level, power, and p-values) in the paper. See [`Hypothesis_Testing/README.md`](Hypothesis_Testing/README.md) for details.
+Contains code to reproduce the hypothesis testing simulation results in the paper. Compares **ASEtest**, **PredSubtest**, and **PureSubtest** in terms of level, power, and runtime across various network sizes and signal strengths. See [`Hypothesis_Testing/README.md`](Hypothesis_Testing/README.md) for details.
 
 ### `Real_Data_Analysis/`
 Contains code for the real data analysis in the paper. See [`Real_Data_Analysis/README.md`](Real_Data_Analysis/README.md) for details.
