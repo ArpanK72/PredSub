@@ -112,5 +112,3 @@ install.packages(c("RSpectra", "Matrix", "doParallel", "foreach",
 | `n_boot` | Number of bootstrap resamples per test | `100` |
 | `alist` | Subsampling exponents for PredSub; PureSub uses `a + 0.125` | `seq(2.875, 3.125, by = 0.125)` |
 | `epsilons` | Signal strengths; `epsilon = 0` gives level, `epsilon > 0` gives power | `c(0, 0.02, 0.04, 0.08, 0.16)` |
-
-All parameters can be freely modified in `Testing_Run_All.R` to suit different experimental settings.
