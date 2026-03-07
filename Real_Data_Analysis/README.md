@@ -3,7 +3,7 @@
 This folder contains code to reproduce the real data analysis in the paper.
 
 ## Data
-Two datasets are analysed: the **DBLP Co-Authorship** network and the **Cannes 2013 Twitter Multiplex** network. See [`Real_Data_Analysis/Data/README.md`](Real_Data_Analysis/Data/README.md) for details.
+Two datasets are analysed: the **DBLP Co-Authorship** network and the **Cannes 2013 Twitter Multiplex** network. See [`Data/README.md`](Data/README.md) for details.
 
 In each case, the goal is to test whether two networks on the same node set have the same underlying latent structure.
 
