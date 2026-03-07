@@ -91,9 +91,9 @@ for (iter in 1:B) {
     Xhat2_new <- B2$Xhat
     dist      <- matrix_distance(Xhat1_new, I_pq, Xhat2_new, I_pq, rho_n = 1, type = "absolute")
     t_SS      <- as.numeric(difftime(Sys.time(), st, units = "secs"))
-    rm(Xhat1_new, Xhat2_new, B1, B2); gc()
     
     H1_estSS[[i]][[iter]] <- c(dist, t_SS, B1$loop + B2$loop)
+    rm(Xhat1_new, Xhat2_new, B1, B2); gc()
     cat(sprintf("  estSS | a = %.3f | m = %d | time = %.2f secs\n", olist[i], m, t_SS))
   }
   
