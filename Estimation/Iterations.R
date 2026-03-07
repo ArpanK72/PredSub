@@ -42,7 +42,7 @@ for (iter in 1:r) {
         cat(sprintf("Iter %d | PredSub done | a = %.2f | rho = %.2f | d = %d\n", iter, alist[k], rho, d))
       }
       
-      rm(A)
+      rm(A);gc()
     }
   }
   
