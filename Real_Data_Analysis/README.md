@@ -65,6 +65,8 @@ alist <- seq(2.75, 3.25, by = 0.25)
 olist <- tail(alist, 2)
 ```
 
+The paper presents results for `d = 5, 10, 20`. To replicate each, update `d` in the respective `Run_All` file and re-run the full pipeline. All other parameters remain the same.
+
 All parameters can be freely modified in the respective `Run_All` files to suit different experimental settings.
 
 ---
