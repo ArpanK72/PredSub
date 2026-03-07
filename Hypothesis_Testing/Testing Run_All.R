@@ -1,3 +1,4 @@
+#Set the directory to be this Hypothesis_Testing folder
 
 n        <- 30000
 d        <- 10
