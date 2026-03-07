@@ -73,7 +73,7 @@ Generates the latent position matrix `X` via Dirichlet sampling and the block pr
 ### `Testing_Iterations.R`
 Runs `r` independent Monte Carlo iterations. In each iteration:
 
-1. Generates a sparse adjacency matrix `A` under $H_0$ from $P = \rho_n X B \Pi^\top$.
+1. Generates a sparse adjacency matrix `A` under $H_0$ from $P = \rho_n X B X^\top$.
 2. For each `epsilon` in `epsilons`, generates `A_e` under $H_1$ from $P_\epsilon = \rho_n X (B + \epsilon J) X^\top$.
 3. Runs **ASE test** on `(A, A_e)` and records p-value and runtime.
 4. Runs **PredSub test** for each `a` in `alist` with `m = ceiling(log(n)^{1+a})` and records p-value and runtime.
