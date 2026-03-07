@@ -1,9 +1,9 @@
 sourceCpp("process_simplices.cpp")
 
 # ---- Load raw data ----
-nverts    <- fread("coauth-DBLP-full-nverts.txt", header = FALSE)$V1
-simplices <- fread("coauth-DBLP-full-simplices.txt", header = FALSE)$V1
-times     <- fread("coauth-DBLP-full-times.txt", header = FALSE)$V1
+nverts    <- fread("~/Data/DBLP/coauth-DBLP-full-nverts.txt", header = FALSE)$V1
+simplices <- fread("~/Data/DBLP/coauth-DBLP-full-simplices.txt", header = FALSE)$V1
+times     <- fread("~/Data/DBLP/coauth-DBLP-full-times.txt", header = FALSE)$V1
 
 # ---- Create edge list ----
 dblp_df <- create_edge_list_cpp(nverts, simplices, times)
