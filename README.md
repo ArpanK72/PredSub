@@ -24,7 +24,8 @@ Contains code to reproduce the estimation simulation results in the paper. Compa
 Contains code to reproduce the hypothesis testing simulation results in the paper. Compares **ASEtest**, **PredSubtest**, and **PureSubtest** in terms of level, power, and runtime across various network sizes and signal strengths. See [`Hypothesis_Testing/README.md`](Hypothesis_Testing/README.md) for details.
 
 ### `Real_Data_Analysis/`
-Contains code to reproduce the real data analysis results in the paper. Analyses two datasets — the **DBLP Co-Authorship** network and the **Cannes 2013 Twitter Multiplex** network — comparing **ASE**, **PredSub**, **PureSub**, and **estSS** in terms of p-values and runtime. See [`Real_Data_Analysis/README.md`](Real_Data_Analysis/README.md) for details.
+Contains code to reproduce the real data analysis in the paper. Analyses two datasets - the **DBLP Co-Authorship** network and the **Cannes 2013 Twitter Multiplex** network - comparing **ASEtest**, **PredSubtest**, **PureSubtest**, and **estSStest** in terms of p-values and runtime. See [`Real_Data_Analysis/README.md`](Real_Data_Analysis/README.md) for details.
+
 ---
 
 ## Requirements
