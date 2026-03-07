@@ -16,7 +16,11 @@ for (iter in 1:r) {
       # ASE
       est1          <- ASE(A, d, p_known = TRUE, p)
       p = est1$p
-      I_pq <- diag(c(rep(1, times = p), rep(-1, times = d - p)))
+      if(p==d){
+        I_pq = diag(d)
+      } else{
+        I_pq <- diag(c(rep(1, times = p), rep(-1, times = d - p)))
+      }
       mat_dist1     <- matrix_distance(X, B, est1$Xhat, I_pq, rho_n = rho)
       result[j, ]   <- c(2, est1$t, mat_dist1, d, 0, rho, n)
       j             <- j + 1
@@ -27,7 +31,11 @@ for (iter in 1:r) {
         m             <- ceiling(log(n)^(1 + alist[k]))
         est2          <- PredSub(A, m, d, p_known = TRUE, p)
         p = est2$p
-        I_pq <- diag(c(rep(1, times = p), rep(-1, times = d - p)))
+        if(p==d){
+          I_pq = diag(d)
+        } else{
+          I_pq <- diag(c(rep(1, times = p), rep(-1, times = d - p)))
+        }
         mat_dist2     <- matrix_distance(X, B, est2$Xhat, I_pq, rho_n = rho)
         result[j, ]   <- c(alist[k], est2$t, mat_dist2, d, 1, rho, m)
         j             <- j + 1
