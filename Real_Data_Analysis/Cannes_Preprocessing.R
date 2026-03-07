@@ -1,5 +1,5 @@
 # ---- Load raw data ----
-all_edges <- read.table("Cannes2013_multiplex_edges.txt",
+all_edges <- read.table("~/Data/Cannes/Cannes2013_multiplex_edges.txt",
                         col.names = c("layer", "source", "target", "weight"),
                         header = FALSE)
 cat("Edge data loaded\n")
