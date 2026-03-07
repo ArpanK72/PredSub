@@ -34,7 +34,8 @@ R (>= 4.0) with the following packages:
 ```r
 install.packages(c("RSpectra", "Matrix", "doParallel", "foreach",
                    "doFuture", "doRNG", "matrixStats", "dplyr",
-                   "tidyr", "igraph", "Rcpp", "RcppEigen", "gtools"))
+                   "tidyr", "igraph", "Rcpp", "RcppEigen", "gtools",
+                   "data.table"))
 ```
 
 ---
