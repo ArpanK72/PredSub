@@ -61,15 +61,43 @@ All parameters can be freely modified in `Testing_Run_All.R` to suit different e
 
 ## File Descriptions
 
-**`Testing_Run_All.R`** — Entry point. Set all parameters here and source the pipeline files.
+### `Testing_Run_All.R`
+The entry point for the full pipeline. Sets all parameters and sources the four files in order.
 
-**`Testing_Functions.R`** — Defines all functions used in the pipeline.
+### `Testing_Functions.R`
+Loads all required packages and defines all core functions used in the simulation, including graph generation, spectral embedding, predictive subsampling, distance computation, and bootstrap-based hypothesis tests.
 
-**`Testing_Generation.R`** — Generates the latent position matrix `X` via Dirichlet sampling and the block probability matrix `B` once, held in memory for all `r` iterations.
+### `Testing_Generation.R`
+Generates the latent position matrix `X` via Dirichlet sampling and the block probability matrix `B` once, held in memory for all `r` iterations. The underlying probability matrix is given by $P^{(1)} = \rho_n \Pi B \Pi^T$.
 
-**`Testing_Iterations.R`** — Runs `r` Monte Carlo iterations. In each iteration, generates `A` under $H_0$ once, then for each `epsilon` generates `A_e` under $H_1$ and runs ASE, PredSub, and PureSub tests. Results are accumulated in memory.
+### `Testing_Iterations.R`
+Runs `r` independent Monte Carlo iterations. In each iteration:
 
-**`Testing_Tables.R`** — Summarises `combined_result` into `tab`, a wide-format data frame with level/power (proportion of rejections at $\alpha = 0.05$) across `epsilon` values, mean runtime in minutes, and speedup relative to ASE.
+1. Generates a sparse adjacency matrix `A` under $H_0$ from $P^{(1)} = \rho_n \Pi B \Pi^T$.
+2. For each `epsilon` in `epsilons`, generates `A_e` under $H_1$ from $P^{(2)} = \rho_n \Pi (B + \epsilon J) \Pi^T$.
+3. Runs **ASE test** on `(A, A_e)` and records p-value and runtime.
+4. Runs **PredSub test** for each `a` in `alist` with `m = ceiling(log(n)^{1+a})` and records p-value and runtime.
+5. Runs **PureSub test** for each `b = a + 0.125` and records p-value and runtime.
+
+Results from all iterations are pooled into `combined_result`.
+
+### `Testing_Tables.R`
+Summarises `combined_result` into the final table `tab`:
+
+- Computes level/power as the proportion of rejections at $\alpha = 0.05$ for each `(method, a, epsilon)` combination.
+- Averages runtime in minutes across all `epsilon` values for each `(method, a)` combination.
+- Computes `speedup = ASE_time / method_time` for each PredSub and PureSub configuration.
+
+---
+
+## Requirements
+
+R (>= 4.0) with the following packages:
+```r
+install.packages(c("RSpectra", "Matrix", "doParallel", "foreach",
+                   "doFuture", "doRNG", "matrixStats", "dplyr",
+                   "tidyr", "igraph", "Rcpp", "RcppEigen", "gtools"))
+```
 
 ---
 
