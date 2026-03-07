@@ -40,7 +40,7 @@ tab <- summary_result %>%
     speedup = round(ase_time / time_mean, 1),
     speedup = ifelse(method == "ASE", NA_real_, speedup)
   ) %>%
-  arrange(method == "ASE", method == "PredSub", a) %>%
+  arrange(method != "ASE", method == "PureSub", a) %>%
   rename_with(
     ~ gsub("eps_", "$\\epsilon$=", .x),
     starts_with("eps_")
