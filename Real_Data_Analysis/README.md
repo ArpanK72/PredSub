@@ -77,15 +77,15 @@ All parameters can be freely modified in the respective `Run_All` files to suit 
 Entry points for the respective analyses. Set all parameters here and source the pipeline files in order.
 
 ### `RDA_Functions.R`
-Loads all required packages and defines all core functions used in the pipeline: `sparsegraph_SBM`, `ASE`, `PredSub`, `matrix_distance`, `estSS_sequential`, and `sparsity`. Also compiles and sources `UnderH0.cpp`.
+Loads all required packages and defines all core functions used in the pipeline.
 
 ### DBLP Co-Authorship Network
 
-**`RDA_Data_Gen_DBLP.R`** — Processes the raw DBLP co-authorship hypergraph data. Converts publication records into a co-authorship edge list using a C++ function, filters edges into two time periods (Era 1: 2011--2014, Era 2: 2015--2018), restricts to authors active in both eras, removes low-degree nodes (degree < 5), and produces two sparse adjacency matrices `A1` and `A2` on the same node set.
+**`RDA_Data_Gen_DBLP.R`** — Processes the raw DBLP co-authorship hypergraph data. Converts publication records into a co-authorship edge list using a C++ function, filters edges into two time periods (Era 1: $2011--2014$, Era 2: $2015--2018$), restricts to authors active in both eras, removes low-degree nodes (degree < 5), and produces two sparse adjacency matrices `A1` and `A2` on the same node set.
 
 ### Cannes 2013 Twitter Multiplex Network
 
-**`RDA_Data_Gen_Cannes.R`** — Processes the raw Cannes 2013 Twitter multiplex edge list. Separates edges into the Retweet (layer 1) and Mention (layer 2) layers, converts to undirected graphs on a common node set, removes isolated nodes, and produces two sparse adjacency matrices `A1` (Retweet) and `A2` (Mention) on the same node set.
+**`RDA_Data_Gen_Cannes.R`** — Processes the raw Cannes 2013 Twitter multiplex edge list. Separates edges into the Retweet (layer 1) and Mention (layer 2) layers, converts to undirected graphs on a common node set, removes isolated nodes, and produces two sparse adjacency matrices, `A1` (Retweet) and `A2` (Mention), on the same node set.
 
 ### Shared Pipeline Files
 
