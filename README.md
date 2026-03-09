@@ -1,6 +1,6 @@
 # PredSub
 
-Supplementary codes for the paper **"Predictive Subsampling for Scalable Inference in Networks"** by Kumar, Tang, and Sengupta. The paper is available online at [`https://arxiv.org/abs/2602.16041`](https://arxiv.org/abs/2602.16041).
+Supplementary codes for the paper **"Predictive Subsampling for Scalable Inference in Networks"** by Arpan Kumar, Minh Tang, and Srijan Sengupta. The paper is available online at [`https://arxiv.org/abs/2602.16041`](https://arxiv.org/abs/2602.16041).
 
 ---
 
