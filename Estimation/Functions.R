@@ -163,7 +163,11 @@ ASE <- function(A, d, p_known = TRUE, p = d) {
     A.vec <- A.eig$vectors[, ord]
   }
   
-  A.coords <- A.vec %*% diag(sqrt(A.val))
+  if(d == 1){
+    A.coords <- A.vec[, 1, drop = FALSE] * sqrt(A.val[1])
+  } else {
+    A.coords <- A.vec %*% diag(sqrt(A.val))
+  }
   
   time <- difftime(Sys.time(), st, units = "secs")
   return(list(Xhat = A.coords, p = p, t = time))
